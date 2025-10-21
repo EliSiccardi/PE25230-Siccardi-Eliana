@@ -1,0 +1,177 @@
+* {
+   padding: 0;
+   margin: 0;
+   box-sizing: border-box;
+}
+
+:root {
+   --color-principal: #468386;
+   --color-secundario: #2f5356;
+   --color-titulos: #33414c;
+   --color-text: #253a3c;
+   --color-text-secundario: #ffffff;
+   --color-icon: #253a3c;
+   --color-icon-secundario: #ffffff;
+}
+
+html{
+    font-family: "Nunito Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: weight;
+  font-style: normal;
+  scroll-behavior: smooth;
+}
+
+body{
+
+    header{
+        .logo{
+            display: block;
+            width: 98%;
+            height: auto;
+            margin: 1%;
+        }
+    }
+
+    .conteiner-nav{
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        list-style: none ;
+        background-color: var(--color-principal);
+        padding: 0.5%;
+        font-family: "Poppins", sans-serif;
+        font-weight: weight;
+        font-style: normal;
+    
+
+        .item-nav{
+            color: var(--color-text-secundario);
+            text-decoration: none;
+
+        }
+
+            .icon-nav{
+                font-size: 150%;
+                color: var(--color-icon-secundario);
+                text-decoration: none;
+            }
+    }
+
+    main{
+        
+        h1{
+        text-align: center;
+        font-family: "Poppins", sans-serif;
+        font-weight: 400;
+        font-size: 200%;
+        margin-top: 2%;
+
+        }
+        
+        .bienvenida-section{
+            text-align: center;
+
+            p{
+                font-size: 120%;
+                color: var(--color-titulos);
+                margin-top: 1%;
+            }
+        }
+
+        .conteiner-video{
+            display: flex;
+            justify-content: center;
+            margin: 2%;
+        }
+
+        .conteiner-viajes{
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            width: 85%;
+            gap: 5%;
+            margin: 1% auto 2% auto;
+
+            .item-viaje{
+                text-align: center;
+            
+                h2{
+                    font-family: "Poppins", sans-serif;
+                    font-weight: 400;
+                    font-size: 130%;
+                    color: var(--color-text);
+                    text-decoration: none;
+                    margin-top: 2%;
+                    margin-bottom: 1%;
+                }
+            
+                h3{
+                    font-weight: 700;
+                    font-size: 110%;
+                    margin-top: 0%;
+                    margin-bottom: 0%;
+                }
+            
+                p{
+                    font-size: 100%;
+                    text-align:justify;
+                    margin: 2% 0% 5% 0%;
+                }
+            
+                .item-carrito{
+                    font-size: 150%;
+                    color: var(--color-icon);
+                    text-decoration: none;
+                    padding:5% 0% 5% 0%;
+                }  
+            }
+        
+            .item-viaje img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 15px;
+            }
+
+        }
+
+        .conteiner-form{
+            margin: 1%;
+        }
+
+        .conteiner-publicidad{
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            width: 70%;
+            gap: 2%;
+            margin: 2% auto 2% auto;
+        
+            .item-promo img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 15px;
+            }   
+        }
+
+    }
+
+    footer{
+        font-size: 90%;
+        display: flex;
+        justify-content:space-between;
+        text-align: center;
+        border-top: 1.5px solid var(--color-secundario);
+        padding: 1%;
+    
+        .icon-redes{
+            font-size: 150%;
+            color: var(--color-icon);
+            text-decoration: none;
+        }
+    }
+}
+
+
+
+
