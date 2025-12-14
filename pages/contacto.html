@@ -28,7 +28,6 @@
 
   <body>
     <header>
-      <!--<img src="./assets/img/logo.png" alt="Logo de Trippy Turismo" width="150px">-->
       <video
         src="../assets/video/logo-animado.mp4"
         class="logo"
@@ -52,7 +51,7 @@
         <li>
           <a href="./carrito.html" class="icon-nav">
             <i class="bi bi-cart3"></i>
-            <span id="cart-count" class="cart-count">0</span>
+            <span id="cart-count" class="cart-count"></span>
           </a>
         </li>
       </ul>
@@ -61,17 +60,17 @@
     <main>
       <h1>Contacto</h1>
       <div>
-        <form method="GET" action="" class="conteiner-form">
+        <form method="POST" action="https://formspree.io/f/xpwvnynj" class="conteiner-form">
           <label for="name">Nombre: </label>
-          <input type="text" id="name" placeholder="Escriba su nombre" />
+          <input type="text" id="name" name="nombre" placeholder="Escriba su nombre" required/>
           <br /><br />
           <label for="mail">Correo electronico: </label>
-          <input type="email" id="mail" placeholder="ejemplo@trippy.com" />
+          <input type="email" id="mail" name="email" placeholder="ejemplo@trippy.com" required/>
           <br /><br />
           <label for="msj">Mensaje: </label>
-          <textarea id="msj"></textarea>
+          <textarea id="msj" name="mensaje" required></textarea>
           <br /><br />
-          <button type="submit">Enviar</button>
+          <button type="submit" class="btn-enviar-formulario">Enviar</button>
         </form>
       </div>
 

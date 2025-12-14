@@ -1,129 +1,145 @@
-let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+// 1. Variables globales
+let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
 
-function mostrarCarrito(){
-    const carritoVacio = document.getElementById('carrito-vacio');
-    const carritoViajes = document.getElementById('carrito-viajes');
-    const carritoTotal = document.getElementById('carrito-total');
-    const tablaBody = document.getElementById('tabla-body')
-    
-    if (!tablaBody) return;
+// 2. Funciones
+function mostrarCarrito() {
+  const carritoVacio = document.getElementById("carrito-vacio");
+  const carritoViajes = document.getElementById("carrito-viajes");
+  const carritoTotal = document.getElementById("carrito-total");
+  const tablaBody = document.getElementById("tabla-body");
 
-    if (carrito.length === 0) {
-        carritoVacio.style.display = 'block';
-        carritoViajes.style.display = 'none';
-        carritoTotal.style.display = 'none';
-        return;
-    }
+  if (!tablaBody) return;
 
-    carritoVacio.style.display = 'none';
-    carritoViajes.style.display = 'block';
-    carritoTotal.style.display = 'block';
+  if (carrito.length === 0) {
+    carritoVacio.style.display = "block";
+    carritoViajes.style.display = "none";
+    carritoTotal.style.display = "none";
+    return;
+  }
 
-    tablaBody.innerHTML = '';
+  carritoVacio.style.display = "none";
+  carritoViajes.style.display = "block";
+  carritoTotal.style.display = "block";
 
-    carrito.forEach(item => {
-        const fila = document.createElement('tr');
-        fila.innerHTML = `
+  tablaBody.innerHTML = "";
+
+  carrito.forEach((item) => {
+    const fila = document.createElement("tr");
+    fila.innerHTML = `
             <td>${item.nombre}</td>
             <td>$${item.precio}</td>
             <td>${item.cantidad}</td>
             <td>$${item.precio * item.cantidad}</td>
-            <td><button class="btn-eliminar" id="${item.id}">Eliminar</button></td>`;
-        tablaBody.appendChild(fila);
-    });
+            <td><button class="btn-eliminar" id="${
+              item.id
+            }">Eliminar</button></td>`;
+    tablaBody.appendChild(fila);
+  });
 
-    calcularTotal();
-    agregarEventosEliminar()
+  calcularTotal();
+  agregarEventosEliminar();
 }
 
 function calcularTotal() {
-    const total = carrito.reduce((sum, item) => sum + (item.precio * item.cantidad), 0);
-    const totalElement = document.getElementById('total');
-    if (totalElement) {
-        totalElement.textContent = total.toFixed(2);
-    }
+  const total = carrito.reduce(
+    (sum, item) => sum + item.precio * item.cantidad,
+    0
+  );
+  const totalElement = document.getElementById("total");
+  if (totalElement) {
+    totalElement.textContent = total.toFixed(2);
+  }
 }
 
-function agregarAlCarrito(id, nombre, precio){
-    const existe = carrito.find(item => item.id === id);
+function agregarAlCarrito(id, nombre, precio) {
+  const existe = carrito.find((item) => item.id === id);
 
-    if (existe){
-        existe.cantidad++;
-    }else{
-        carrito.push({
-            id: id,
-            nombre: nombre,
-            precio: precio,
-            cantidad: 1
-        });
-    }
+  if (existe) {
+    existe.cantidad++;
+  } else {
+    carrito.push({
+      id: id,
+      nombre: nombre,
+      precio: precio,
+      cantidad: 1,
+    });
+  }
 
-    localStorage.setItem('carrito', JSON.stringify(carrito));
-    console.log('Carrito actualizado: ', carrito);
+  localStorage.setItem("carrito", JSON.stringify(carrito));
+  console.log("Carrito actualizado: ", carrito);
 }
 
 function actualizarContador() {
-    const totalViajes = carrito.reduce((sum, item) => sum + item.cantidad, 0);
-    const contador = document.getElementById('cart-count');
+  const totalViajes = carrito.reduce((sum, item) => sum + item.cantidad, 0);
+  const contador = document.getElementById("cart-count");
+
+  if (contador) {
     contador.textContent = totalViajes;
+
+    if (totalViajes === 0) {
+      contador.style.display = "none";
+    } else {
+      contador.style.display = "inline";
+    }
+  }
 }
 
 function eliminarDelCarrito(id) {
-    carrito = carrito.filter(item => item.id !== id);
+  carrito = carrito.filter((item) => item.id !== id);
 
-    localStorage.setItem('carrito', JSON.stringify(carrito));
-    actualizarContador();
-    mostrarCarrito();
+  localStorage.setItem("carrito", JSON.stringify(carrito));
+  actualizarContador();
+  mostrarCarrito();
 }
 
 function agregarEventosEliminar() {
-    const botonesEliminar = document.querySelectorAll('.btn-eliminar');
+  const botonesEliminar = document.querySelectorAll(".btn-eliminar");
 
-    botonesEliminar.forEach(btn => {
-        btn.addEventListener('click', (evento) => {  
-            const boton = evento.target.closest('.btn-eliminar');
-            const id = boton.id;
+  botonesEliminar.forEach((btn) => {
+    btn.addEventListener("click", (evento) => {
+      const boton = evento.target.closest(".btn-eliminar");
+      const id = boton.id;
 
-            eliminarDelCarrito(id);
-        });
+      eliminarDelCarrito(id);
     });
+  });
 }
 
-function vaciarCarrito(){
-    carrito = [];
-    localStorage.setItem('carrito', JSON.stringify(carrito));
-    actualizarContador();
-    mostrarCarrito();
+function vaciarCarrito() {
+  carrito = [];
+  localStorage.setItem("carrito", JSON.stringify(carrito));
+  actualizarContador();
+  mostrarCarrito();
 }
 
+// 3. Inicialización
+function inicializar() {
+  actualizarContador();
+  mostrarCarrito();
 
+  //Escuchar eventos
+  const botonReservar = document.querySelectorAll(".btn-reservar-carrito");
+  botonReservar.forEach((btn) => {
+    btn.addEventListener("click", (evento) => {
+      const article = evento.target.closest(".item-viaje");
+      const id = article.id;
+      const nombre = article.querySelector("h2").textContent;
+      const precio = parseFloat(article.querySelector(".precio").textContent);
 
-const botonReservar = document.querySelectorAll('.btn-reservar-carrito');
-
-botonReservar.forEach(btn => {
-    btn.addEventListener('click', (evento) => {
-        const article = evento.target.parentElement;
-        const id = article.id;
-        const nombre = article.querySelector('h2').textContent;
-        const precio = parseFloat(article.querySelector('.precio').textContent);
-
-        agregarAlCarrito(id, nombre, precio);
-        actualizarContador();
+      agregarAlCarrito(id, nombre, precio);
+      actualizarContador();
     });
-    
-});
+  });
 
-document.addEventListener('DOMContentLoaded', () => {
-    actualizarContador();
-    mostrarCarrito();
-});
-
-const botonVaciar = document.querySelector('.btn-vaciar');
-if (botonVaciar) {
-    botonVaciar.addEventListener('click', () => {
-        if (confirm('¿Estas seguro de que deseas vaciar el carrito?')) {
-            vaciarCarrito();
-        }
+  const botonVaciar = document.querySelector(".btn-vaciar");
+  if (botonVaciar) {
+    botonVaciar.addEventListener("click", () => {
+      if (confirm("¿Estas seguro de que deseas vaciar el carrito?")) {
+        vaciarCarrito();
+      }
     });
+  }
 }
 
+// 4. Ejecutar
+document.addEventListener("DOMContentLoaded", inicializar);
