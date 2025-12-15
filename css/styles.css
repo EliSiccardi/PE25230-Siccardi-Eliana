@@ -413,3 +413,116 @@ footer .icon-redes {
 footer .icon-redes:hover {
   color: var(--color-principal);
 }
+
+
+
+/* ========================================
+   MEDIA QUERIES 
+   ======================================== */
+
+/* hasta 600px */
+@media (max-width: 600px) {
+  body main h1 {
+    font-size: 130%;
+    margin-top: 5%;
+  }
+
+  body .conteiner-nav {
+    flex-wrap: wrap;
+    padding: 2%;
+    gap: 10px;
+  }
+
+  body .conteiner-nav .item-nav{
+    font-size: smaller;
+  }
+  body .conteiner-nav .icon-nav {
+    font-size: 110%;
+  }
+
+  body main .bienvenida-section p {
+    font-size: 95%;
+    padding: 0 5%;
+  }
+
+  body main .conteiner-video video {
+    width: 95%;
+  }
+
+  /* Viajes en 1 columna */
+  body main .conteiner-viajes {
+    grid-template-columns: 1fr;
+    width: 50%;
+    gap: 2%;
+  }
+
+  body main .conteiner-viajes .item-viaje h2 {
+    font-size: 120%;
+  }
+
+  body main .conteiner-viajes .item-viaje p {
+    text-align: center;
+    font-size: 80%;
+  }
+
+  body main .conteiner-viajes .item-viaje .btn-reservar-carrito {
+    width: 100%;
+    padding: 4% 0;
+    font-size: 100%;
+  }
+
+  body footer.footer-viajes {
+    gap: 15px;
+    padding: 2%;
+    font-size: 85%;
+    margin-top: 15%;
+  }
+
+  /* Publicidad en 2 columnas */
+  body main .conteiner-publicidad {
+    grid-template-columns: repeat(2, 1fr);
+    width: 85%;
+  }
+
+  /* Formulario*/
+  body main .conteiner-form {
+    margin: 5%;
+  }
+
+  body main .conteiner-form input,
+  body main .conteiner-form textarea {
+    width: 100%;
+    padding: 3%;
+    margin-bottom: 3%;
+    font-size: 100%;
+  }
+
+  /* Tabla con scroll horizontal */
+  body main .carrito-viajes {
+    width: 100%;
+    overflow-x: auto;
+  }
+
+  body main .tabla-carrito {
+    min-width: 500px;
+  }
+
+  body main .tabla-carrito th,
+  body main .tabla-carrito td {
+    padding: 3%;
+    font-size: 90%;
+  }
+
+  body main .btn-eliminar {
+    padding: 6px 12px;
+    font-size: 85%;
+  }
+
+  body footer{
+    gap: 15px;
+    padding: 2%;
+    font-size: 85%;
+    margin-top: 5%;
+  }
+
+}

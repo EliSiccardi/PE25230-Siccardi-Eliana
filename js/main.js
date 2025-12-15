@@ -29,7 +29,7 @@ function mostrarCarrito() {
             <td>${item.nombre}</td>
             <td>$${item.precio}</td>
             <td>${item.cantidad}</td>
-            <td>$${item.precio * item.cantidad}</td>
+            <td>$${(item.precio * item.cantidad).toFixed(2)}</td>
             <td><button class="btn-eliminar" id="${
               item.id
             }">Eliminar</button></td>`;
