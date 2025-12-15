@@ -497,7 +497,7 @@ footer .icon-redes:hover {
     font-size: 100%;
   }
 
-  /* Tabla con scroll horizontal */
+  /* Tabla */
   body main .carrito-viajes {
     width: 100%;
     overflow-x: auto;
