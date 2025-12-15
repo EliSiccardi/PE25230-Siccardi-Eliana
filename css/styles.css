@@ -103,7 +103,15 @@ main h1 {
 .conteiner-video {
   display: flex;
   justify-content: center;
-  margin: 2%;
+  align-items: center;
+  gap: 3%;
+  margin: 2% auto;
+  width: 100%;
+}
+
+.video-principal {
+  width: 35%;
+  border-radius: 10px;
 }
 
 /* ============================================

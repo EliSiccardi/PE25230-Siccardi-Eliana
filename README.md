@@ -2,8 +2,8 @@
 @Version: 1.0.0
 @Fecha: 202510141250
 
-@Actualizacion: 202510211620
+@Actualizacion: 202512151202
 
-Descripcion: Pre entrega comision 25230, e-commerce de turismo
+Descripcion: Entrega final comision 25230, e-commerce de turismo
 
-Tecnologías: HTML - CSS
+Tecnologías: HTML - CSS -JS
