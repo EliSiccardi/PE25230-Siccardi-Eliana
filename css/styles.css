@@ -422,8 +422,6 @@ footer .icon-redes:hover {
   color: var(--color-principal);
 }
 
-
-
 /* ========================================
    MEDIA QUERIES 
    ======================================== */
@@ -453,8 +451,9 @@ footer .icon-redes:hover {
     padding: 0 5%;
   }
 
-  body main .conteiner-video video {
+  body main .video-principal {
     width: 95%;
+    border-radius: 10px;
   }
 
   /* Viajes en 1 columna */
